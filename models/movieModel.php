@@ -55,11 +55,11 @@ class Movie {
     {
         $this->genre = $genre;
     }
-    public function getFilmmaker()
+    public function getFilmmakers()
     {
         return $this->filmmakers;
     }
-    public function setFilmmaker(Filmmaker $filmmakers)
+    public function setFilmmakers(array $filmmakers)
     {
         $this->filmmakers = $filmmakers;
     }
@@ -78,5 +78,23 @@ class Movie {
     public function setStudios(array $studios)
     {
         $this->studios = $studios;
+    }
+    public function update(){
+
+    }
+    public static function staticDelete($id){
+        // PDO
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=movietheque', "root", "root");
+
+        } catch( PDOException $e ){
+        }
+
+        $sql = "DELETE FROM movie WHERE id = ".strval($id);
+        $conn = $dbh->prepare($sql);
+        $conn->execute();
+        $data = $conn->fetchAll();
+
+        return $data;
     }
 }

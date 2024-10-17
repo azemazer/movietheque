@@ -10,6 +10,10 @@ class Filmmaker {
         $this->name = $request->name;
         $this->biography = $request->biography;
     }
+    public function getId()
+    {
+        return $this->id;
+    }
     public function getName()
     {
         return $this->name;
